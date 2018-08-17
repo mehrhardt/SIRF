@@ -110,6 +110,7 @@ void* cGT_newObject(const char* name)
 		NEW_GADGET_CHAIN(AcquisitionsProcessor);
 		NEW_GADGET_CHAIN(ImagesReconstructor);
 		NEW_GADGET_CHAIN(ImagesProcessor);
+		NEW_GADGET_CHAIN(DicomImagesWriter);
 		NEW_GADGET_CHAIN(RemoveOversamplingProcessor);
 		NEW_GADGET_CHAIN(ExtractRealImagesProcessor);
 		NEW_GADGET_CHAIN(SimpleReconstructionProcessor);
@@ -118,6 +119,7 @@ void* cGT_newObject(const char* name)
 		NEW_GADGET(IsmrmrdAcqMsgWriter);
 		NEW_GADGET(IsmrmrdImgMsgReader);
 		NEW_GADGET(IsmrmrdImgMsgWriter);
+		NEW_GADGET(IsmrmrdDicomImgMsgWriter);
 		NEW_GADGET(NoiseAdjustGadget);
 		NEW_GADGET(AsymmetricEchoAdjustROGadget);
 		NEW_GADGET(RemoveROOversamplingGadget);
@@ -133,6 +135,7 @@ void* cGT_newObject(const char* name)
 		NEW_GADGET(ComplexToFloatGadget);
 		NEW_GADGET(FloatToShortGadget);
 		NEW_GADGET(ImageFinishGadget);
+		NEW_GADGET(DicomFinishGadget);
 		NEW_GADGET(AcquisitionFinishGadget);
 		NEW_GADGET(SimpleReconGadgetSet);
 		return unknownObject("object", name, __FILE__, __LINE__);

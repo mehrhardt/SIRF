@@ -308,6 +308,39 @@ namespace sirf {
 
 	/*!
 	\ingroup Gadgetron Extensions
+	\brief Gadget chain for writing image data in Dicom format.
+
+	*/
+
+	class DicomImagesWriter : public GadgetChain {
+	public:
+		DicomImagesWriter() :
+			host_("localhost"), port_("9002"),
+			reader_(new IsmrmrdImgMsgReader),
+			writer_(new IsmrmrdDicomImgMsgWriter)
+		{
+			add_reader("reader", reader_);
+			add_writer("writer", writer_);
+			gadgetron::shared_ptr<DicomFinishGadget> endgadget(new DicomFinishGadget);
+			set_endgadget(endgadget);
+		}
+		static const char* class_name()
+		{
+			return "DicomImagesWriter";
+		}
+
+//		void check_connection();
+//		void process(MRImageData& images);
+
+	private:
+		std::string host_;
+		std::string port_;
+		gadgetron::shared_ptr<IsmrmrdImgMsgReader> reader_;
+		gadgetron::shared_ptr<IsmrmrdDicomImgMsgWriter> writer_;
+	};
+
+	/*!
+	\ingroup Gadgetron Extensions
 	\brief A class for MR acquisition modelling.
 
 	MR Acquisition model is a mathematical model that represents
